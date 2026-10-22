@@ -1,0 +1,13 @@
+:root {
+  /* Durgam Soft Design System Tokens */
+  --color-primary-navy: #0B1F3A;
+  --color-dark-navy: #071525;
+  --color-primary-orange: #F97316;
+  --color-orange-hover: #EA580C;
+  --color-light-orange: #FFF7ED;
+  --color-white: #FFFFFF;
+  --color-light-gray: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-primary-text: #0F172A;
+  --color-secondary-text: #475569;
+}

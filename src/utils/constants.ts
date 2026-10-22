@@ -1,0 +1,44 @@
+export const COMPANY_NAME = 'Durgam Soft Pvt. Ltd.';
+
+export const THEME_COLORS = {
+  primaryNavy: '#0B1F3A',
+  darkNavy: '#071525',
+  primaryOrange: '#F97316',
+  orangeHover: '#EA580C',
+  lightOrange: '#FFF7ED',
+  white: '#FFFFFF',
+  lightGray: '#F8FAFC',
+  border: '#E2E8F0',
+  primaryText: '#0F172A',
+  secondaryText: '#475569',
+} as const;
+
+export const SECTION_IDS = {
+  HOME: 'home',
+  PRODUCTS: 'products',
+  SERVICES: 'services',
+  INDUSTRIES: 'industries',
+  ABOUT: 'about-us',
+  RESOURCES: 'resources',
+  CAREERS: 'careers',
+  CONTACT: 'contact',
+} as const;
+
+export const PLACEHOLDERS = {
+  HERO_HEADLINE: '[HERO_HEADLINE]',
+  HERO_DESCRIPTION: '[HERO_DESCRIPTION]',
+  PRIMARY_CTA: '[PRIMARY_CTA]',
+  SECONDARY_CTA: '[SECONDARY_CTA]',
+  PRODUCT_DESCRIPTION: '[PRODUCT_DESCRIPTION]',
+  SERVICE_DESCRIPTION: '[SERVICE_DESCRIPTION]',
+  FOUNDER_NAME: '[FOUNDER_NAME]',
+  FOUNDER_DESIGNATION: '[FOUNDER_DESIGNATION]',
+  FOUNDER_BIO: '[FOUNDER_BIO]',
+  FOUNDER_VISION: '[FOUNDER_VISION]',
+  BLOG_POST: '[BLOG_POST]',
+  CAREERS_HEADLINE: '[CAREERS_HEADLINE]',
+  CAREERS_DESCRIPTION: '[CAREERS_DESCRIPTION]',
+  VIEW_OPENINGS: '[VIEW_OPENINGS]',
+  CONTACT_HEADLINE: '[CONTACT_HEADLINE]',
+  CONTACT_DESCRIPTION: '[CONTACT_DESCRIPTION]',
+} as const;

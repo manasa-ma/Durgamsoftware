@@ -65,19 +65,7 @@ export const NAVIGATION_ITEMS: NavItem[] = [
   },
   {
     label: 'About Us',
-    to: '/about',
-    children: [
-      {
-        title: 'Company Overview',
-        to: '/about',
-        description: 'About Durgam Soft Pvt. Ltd., mission & values',
-      },
-      {
-        title: 'Founder & CEO',
-        to: '/about/founder',
-        description: 'Executive leadership biography and vision',
-      },
-    ],
+    to: '/about-us',
   },
   {
     label: 'Resources',

@@ -12,7 +12,7 @@ This document tracks all active and implemented routes for the **Durgam Soft Pvt
 | **Products** | `/products` | `src/pages/Products/ProductsPage.tsx` | Dedicated products landing page introducing billmaster & hardware |
 | **Services** | `/services` | `src/pages/Services/ServicesPage.tsx` | Dedicated services landing page (Application Development & Digital Marketing) |
 | **Industries** | `/industries` | `src/pages/Industries/IndustriesPage.tsx` | Dedicated industries landing page showcasing sectors served |
-| **About Us** | `/about` | `src/pages/About/AboutPage.tsx` | Dedicated company overview, mission, values, and founder introduction |
+| **About Us** | `/about-us` (alias: `/about`) | `src/pages/About/AboutPage.tsx` | Dedicated company overview, journey, mission, values, founder, and customer relationships |
 | **Resources** | `/resources` | `src/pages/Resources/ResourcesPage.tsx` | Dedicated resource center linking to company blog and knowledge assets |
 | **Careers** | `/careers` | `src/pages/Careers/CareersPage.tsx` | Dedicated careers page with culture values and open positions preview |
 | **Contact Us** | `/contact` | `src/pages/Contact/ContactPage.tsx` | Dedicated contact page with corporate address, communication channels, and direct inquiry form |
@@ -44,7 +44,7 @@ This document tracks all active and implemented routes for the **Durgam Soft Pvt
 
 | Route | Component File | Description |
 | :--- | :--- | :--- |
-| `/about/founder` | `src/pages/About/FounderPage.tsx` | Executive biography, leadership history, and vision quote |
+| `/about-us/founder` (alias: `/about/founder`) | `src/pages/About/FounderPage.tsx` | Executive biography, leadership history, and vision quote |
 | `/resources/blog` | `src/pages/Resources/Blog/BlogPage.tsx` | Editorial archive with category filtering |
 | `/resources/blog/:slug` | `src/pages/Resources/Blog/BlogPostPage.tsx` | Dynamic article reader with breadcrumb and layout |
 

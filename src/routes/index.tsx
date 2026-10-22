@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
 import HomePage from '../pages/Home/HomePage';
 import ProductsPage from '../pages/Products/ProductsPage';
@@ -11,7 +11,6 @@ import DesktopDevelopmentPage from '../pages/Services/DesktopDevelopment/Desktop
 import DigitalMarketingPage from '../pages/Services/DigitalMarketing/DigitalMarketingPage';
 import IndustriesPage from '../pages/Industries/IndustriesPage';
 import AboutPage from '../pages/About/AboutPage';
-import FounderPage from '../pages/About/FounderPage';
 import ResourcesPage from '../pages/Resources/ResourcesPage';
 import BlogPage from '../pages/Resources/Blog/BlogPage';
 import BlogPostPage from '../pages/Resources/Blog/BlogPostPage';
@@ -68,8 +67,16 @@ export const router = createBrowserRouter([
         element: <AboutPage />,
       },
       {
+        path: '/about-us',
+        element: <AboutPage />,
+      },
+      {
         path: '/about/founder',
-        element: <FounderPage />,
+        element: <Navigate to="/about-us" replace />,
+      },
+      {
+        path: '/about-us/founder',
+        element: <Navigate to="/about-us" replace />,
       },
       {
         path: '/resources',

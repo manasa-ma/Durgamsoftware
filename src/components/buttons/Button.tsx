@@ -20,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-md';
+    'inline-flex items-center justify-center font-medium transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-md hover:-translate-y-0.5 active:translate-y-0 active:scale-98 cursor-pointer select-none';
 
   const sizeStyles = {
     sm: 'text-xs px-3.5 py-1.5',

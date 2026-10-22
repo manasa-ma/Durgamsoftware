@@ -11,7 +11,7 @@ export const AboutPreview: React.FC = () => {
         <SectionHeader
           badge="About Durgam Soft"
           title="About Us — Company Overview"
-          subtitle="Learn more about our organizational foundation, engineering values, and executive leadership."
+          subtitle="Learn more about our product foundation, engineering values, and executive leadership."
         />
 
         {/* Company Overview Intro */}

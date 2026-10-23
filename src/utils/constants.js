@@ -31,10 +31,12 @@ export const PLACEHOLDERS = {
   SECONDARY_CTA: '[SECONDARY_CTA]',
   PRODUCT_DESCRIPTION: '[PRODUCT_DESCRIPTION]',
   SERVICE_DESCRIPTION: '[SERVICE_DESCRIPTION]',
-  FOUNDER_NAME: '[FOUNDER_NAME]',
-  FOUNDER_DESIGNATION: '[FOUNDER_DESIGNATION]',
-  FOUNDER_BIO: '[FOUNDER_BIO]',
-  FOUNDER_VISION: '[FOUNDER_VISION]',
+  FOUNDER_NAME: 'Venu Durgam',
+  FOUNDER_DESIGNATION: 'Founder & CEO, Durgam Soft Pvt. Ltd.',
+  FOUNDER_BIO:
+    'Venu Durgam is the Founder and Chief Executive Officer of Durgam Soft Pvt. Ltd. With an engineering mindset and deep respect for commercial business operations, he established Durgam Soft in 2022 in Hyderabad to build software that business owners genuinely enjoy using.',
+  FOUNDER_VISION:
+    'Empowering fast, everyday business operations through modern, reliable, and accessible software.',
   BLOG_POST: '[BLOG_POST]',
   CAREERS_HEADLINE: '[CAREERS_HEADLINE]',
   CAREERS_DESCRIPTION: '[CAREERS_DESCRIPTION]',

@@ -66,21 +66,8 @@ export const NAVIGATION_ITEMS = [
     to: '/about-us',
   },
   {
-    label: 'Resources',
-    to: '/resources',
-    children: [
-      {
-        title: 'Blog',
-        to: '/resources/blog',
-        description: 'Industry insights, technology articles, and updates',
-      },
-      {
-        title: 'View All Resources',
-        to: '/resources',
-        description: 'Knowledge base and resource overview',
-        isAction: true,
-      },
-    ],
+    label: 'Blog',
+    to: '/resources/blog',
   },
   {
     label: 'Careers',

@@ -82,6 +82,82 @@
   animation: pulseSubtle 3s ease-in-out infinite;
 }
 
+/* Float & Gentle Hover Floating Motion */
+@keyframes floatGentle {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+.animate-float-gentle {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+@keyframes carGlowPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.animate-glow-pulse {
+  animation: carGlowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatReverse {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-0.5deg);
+  }
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+}
+
+/* Staggered Entrance Animations for Contact Page */
+@keyframes contactFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-contact-header {
+  animation: contactFadeUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.05s both;
+}
+
+.animate-contact-form {
+  animation: contactFadeUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s both;
+}
+
+.animate-contact-showcase {
+  animation: contactFadeUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.25s both;
+}
+
+.animate-contact-details {
+  animation: contactFadeUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s both;
+}
+
+.animate-contact-map {
+  animation: contactFadeUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.45s both;
+}
+
 /* ======================================================== */
 /* Webflow Indage Reference Hero Animations                 */
 /* ======================================================== */
@@ -146,7 +222,13 @@
   .animate-hero-card-orange,
   .animate-hero-card-black,
   .animate-hero-title,
-  .animate-hero-intro {
+  .animate-hero-intro,
+  .animate-float-gentle,
+  .animate-contact-header,
+  .animate-contact-form,
+  .animate-contact-showcase,
+  .animate-contact-details,
+  .animate-contact-map {
     animation: none !important;
     transform: none !important;
     opacity: 1 !important;

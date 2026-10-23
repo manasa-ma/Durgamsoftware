@@ -15,6 +15,7 @@ import ResourcesPage from '../pages/Resources/ResourcesPage';
 import BlogPage from '../pages/Resources/Blog/BlogPage';
 import BlogPostPage from '../pages/Resources/Blog/BlogPostPage';
 import CareersPage from '../pages/Careers/CareersPage';
+import JobDetailsPage from '../pages/Careers/JobDetailsPage';
 import ContactPage from '../pages/Contact/ContactPage';
 import BookDemoPage from '../pages/BookDemo/BookDemoPage';
 
@@ -93,6 +94,14 @@ export const router = createBrowserRouter([
       {
         path: '/careers',
         element: <CareersPage />,
+      },
+      {
+        path: '/careers/:jobId',
+        element: <JobDetailsPage />,
+      },
+      {
+        path: '/jobs/:jobId',
+        element: <JobDetailsPage />,
       },
       {
         path: '/contact',

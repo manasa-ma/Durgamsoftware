@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { MapPin, Send } from 'lucide-react';
+import { MapPin, Send, Mail, Phone, Globe } from 'lucide-react';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
 import { SectionHeader } from '../../components/common/SectionHeader';
 import { Button } from '../../components/buttons/Button';
+import softwareContactImg from '../../assets/images/contact/software-contact.png';
 
 export const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -40,27 +41,27 @@ export const ContactPage = () => {
     <div className="bg-white min-h-screen">
       <Breadcrumb items={[{ label: 'Contact Us' }]} />
 
-      <section className="py-16 border-b border-brand-border">
+      <section className="py-14 border-b border-brand-border bg-white animate-contact-header">
         <div className="container-custom">
           <SectionHeader
             badge="Get in Touch"
-            title="Contact Durgam Soft"
-            subtitle="Reach out to our team for sales, support, or software development inquiries."
+            title="Let's Connect and Innovate"
+            subtitle="Reach out to our team for software solutions, billmaster demos, or custom technology inquiries."
             align="center"
           />
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-b from-brand-light-gray via-brand-light-orange/40 to-white">
+      {/* Contact Form & Software Showcase Section (Reference Techasoft Design) */}
+      <section className="relative py-14 md:py-20 overflow-hidden bg-gradient-to-b from-brand-light-gray via-brand-light-orange/40 to-white">
         {/* Soft decorative glows */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -top-24 -left-24 w-[28rem] h-[28rem] rounded-full bg-brand-orange/10 blur-3xl"
+          className="pointer-events-none absolute -top-24 -left-24 w-[28rem] h-[28rem] rounded-full bg-brand-orange/10 blur-3xl animate-pulse-subtle"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-32 -right-20 w-[32rem] h-[32rem] rounded-full bg-brand-navy/10 blur-3xl"
+          className="pointer-events-none absolute -bottom-32 -right-20 w-[32rem] h-[32rem] rounded-full bg-brand-navy/10 blur-3xl animate-pulse-subtle"
         />
         {/* Faint dot grid */}
         <div
@@ -77,105 +78,249 @@ export const ContactPage = () => {
           }}
         />
 
-        <div className="container-custom relative">
-          <div className="max-w-3xl mx-auto">
-            <div className="p-8 md:p-12 rounded-2xl bg-white/85 backdrop-blur-sm border border-brand-border shadow-[0_18px_50px_-20px_rgba(11,31,58,0.28)]">
-              {submitted ? (
-                <div className="text-center py-10">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-emerald-600 font-bold">✓</span>
+        <div className="container-custom relative max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+            {/* Left Column: Contact Form */}
+            <div className="lg:col-span-7 animate-contact-form">
+              <div className="p-8 sm:p-10 rounded-3xl bg-white border border-brand-border shadow-[0_12px_40px_-15px_rgba(11,31,58,0.12)] hover:shadow-[0_24px_60px_-12px_rgba(11,31,58,0.22)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.995] transition-all duration-500 ease-out h-full flex flex-col justify-between">
+                <div>
+                  <div className="mb-6">
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-1.5">
+                      Send Us a Message
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight">
+                      Let&rsquo;s Start a Conversation
+                    </h2>
+                    <p className="text-sm text-brand-secondary-text mt-1.5 leading-relaxed">
+                      Fill out the form below and our team will get back to you within 24 hours.
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold text-brand-navy mb-2">
-                    Message Sent
+
+                  {submitted ? (
+                    <div className="text-center py-12 my-auto">
+                      <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4 animate-bounce">
+                        <span className="text-emerald-600 font-bold text-xl">✓</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-brand-navy mb-2">
+                        Message Sent Successfully
+                      </h3>
+                      <p className="text-brand-secondary-text max-w-md mx-auto text-sm">
+                        Thank you for contacting Durgam Soft. Our team will review your inquiry and get back to you shortly.
+                      </p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                      <div>
+                        <label className="block text-xs sm:text-sm font-semibold text-brand-navy mb-1.5">
+                          Full Name *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={handleChange('name')}
+                          placeholder="Your full name"
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border text-sm text-brand-primary-text bg-white hover:border-slate-400 hover:shadow-xs focus:outline-none focus:ring-4 focus:ring-brand-orange/20 focus:border-brand-orange focus:shadow-[0_4px_16px_rgba(249,115,22,0.14)] focus:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs sm:text-sm font-semibold text-brand-navy mb-1.5">
+                            Email Address *
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={handleChange('email')}
+                            placeholder="name@company.com"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border text-sm text-brand-primary-text bg-white hover:border-slate-400 hover:shadow-xs focus:outline-none focus:ring-4 focus:ring-brand-orange/20 focus:border-brand-orange focus:shadow-[0_4px_16px_rgba(249,115,22,0.14)] focus:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-xs sm:text-sm font-semibold text-brand-navy mb-1.5">
+                            Company Name
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.company}
+                            onChange={handleChange('company')}
+                            placeholder="Your company name"
+                            className="w-full px-4 py-3 rounded-xl border border-brand-border text-sm text-brand-primary-text bg-white hover:border-slate-400 hover:shadow-xs focus:outline-none focus:ring-4 focus:ring-brand-orange/20 focus:border-brand-orange focus:shadow-[0_4px_16px_rgba(249,115,22,0.14)] focus:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs sm:text-sm font-semibold text-brand-navy mb-1.5">
+                          Subject *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.subject}
+                          onChange={handleChange('subject')}
+                          placeholder="What is this regarding?"
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border text-sm text-brand-primary-text bg-white hover:border-slate-400 hover:shadow-xs focus:outline-none focus:ring-4 focus:ring-brand-orange/20 focus:border-brand-orange focus:shadow-[0_4px_16px_rgba(249,115,22,0.14)] focus:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs sm:text-sm font-semibold text-brand-navy mb-1.5">
+                          Message *
+                        </label>
+                        <textarea
+                          required
+                          rows={4}
+                          value={formData.message}
+                          onChange={handleChange('message')}
+                          placeholder="Tell us how we can help you..."
+                          className="w-full px-4 py-3 rounded-xl border border-brand-border text-sm text-brand-primary-text bg-white hover:border-slate-400 hover:shadow-xs focus:outline-none focus:ring-4 focus:ring-brand-orange/20 focus:border-brand-orange focus:shadow-[0_4px_16px_rgba(249,115,22,0.14)] focus:-translate-y-0.5 active:translate-y-0 transition-all duration-200 resize-none"
+                        />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        size="lg"
+                        className="w-full gap-2 py-4 rounded-xl font-bold text-base shadow-md hover:shadow-[0_14px_30px_-6px_rgba(249,115,22,0.5)] hover:-translate-y-1 active:translate-y-0.5 active:scale-[0.98] active:shadow-sm transition-all duration-300 ease-out cursor-pointer"
+                      >
+                        <Send className="w-4 h-4" />
+                        <span>Send Message</span>
+                      </Button>
+                    </form>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Software Image at the Top + Quote & Message (Reference Techasoft Design) */}
+            <div className="lg:col-span-5 animate-contact-showcase">
+              <div className="bg-white rounded-3xl p-8 sm:p-10 border border-brand-border shadow-[0_12px_40px_-15px_rgba(11,31,58,0.12)] hover:shadow-[0_24px_60px_-12px_rgba(11,31,58,0.22)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.995] transition-all duration-500 ease-out h-full flex flex-col justify-between">
+                <div>
+                  {/* Image Related to Our Software at the Top with Gentle Floating Animation */}
+                  <div className="rounded-2xl overflow-hidden border border-slate-200/90 shadow-sm bg-gradient-to-b from-[#FAF7F2] to-white p-3 mb-7 group hover:shadow-xl hover:border-orange-200 transition-all duration-500 cursor-pointer">
+                    <img
+                      src={softwareContactImg}
+                      alt="Durgam Soft & billmaster 3D Cloud Software Platform"
+                      className="w-full h-auto max-h-[300px] object-contain mx-auto block transition-transform duration-700 ease-out group-hover:scale-106 animate-float-gentle drop-shadow-md"
+                    />
+                  </div>
+
+                  {/* Quote and Supportive Text */}
+                  <span className="text-xs font-bold uppercase tracking-wider text-brand-orange block mb-2">
+                    Durgam Soft &amp; billmaster
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight mb-3">
+                    We are here for you!
                   </h3>
-                  <p className="text-brand-secondary-text">
-                    Thank you for contacting Durgam Soft. Our team will get back to you soon.
+
+                  {/* Simple and Neat Quote */}
+                  <blockquote className="border-l-4 border-brand-orange pl-4 py-2.5 bg-orange-50/70 rounded-r-xl my-4 hover:shadow-xs hover:border-brand-orange-hover hover:bg-orange-50 transition-all duration-300">
+                    <p className="text-base sm:text-lg font-semibold text-slate-800 italic leading-snug">
+                      &ldquo;Practical, reliable software designed to simplify everyday business operations and power lasting growth.&rdquo;
+                    </p>
+                  </blockquote>
+
+                  <p className="text-sm sm:text-base text-brand-secondary-text leading-relaxed font-normal mt-3">
+                    Our team is ready to assist you. Have an idea, a question, or ready to elevate your business operations with <strong>billmaster</strong>? Let&rsquo;s bring it to reality together.
                   </p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleChange('name')}
-                      placeholder="Your full name"
-                      className="w-full px-4 py-3 rounded-lg border border-brand-border text-sm text-brand-primary-text focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-brand-orange"
-                    />
-                  </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange('email')}
-                      placeholder="name@company.com"
-                      className="w-full px-4 py-3 rounded-lg border border-brand-border text-sm text-brand-primary-text focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-brand-orange"
-                    />
+                {/* Quick Trust Highlights */}
+                <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-slate-600">
+                  <div className="flex items-center gap-1.5 hover:text-emerald-600 transition-colors">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span>Fast Response</span>
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={handleChange('company')}
-                      placeholder="Your company name"
-                      className="w-full px-4 py-3 rounded-lg border border-brand-border text-sm text-brand-primary-text focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-brand-orange"
-                    />
+                  <div className="flex items-center gap-1.5 hover:text-brand-orange transition-colors">
+                    <span className="w-2 h-2 rounded-full bg-brand-orange" />
+                    <span>Live Product Demo</span>
                   </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      Subject *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.subject}
-                      onChange={handleChange('subject')}
-                      placeholder="What is this regarding?"
-                      className="w-full px-4 py-3 rounded-lg border border-brand-border text-sm text-brand-primary-text focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-brand-orange"
-                    />
+                  <div className="flex items-center gap-1.5 hover:text-blue-600 transition-colors">
+                    <span className="w-2 h-2 rounded-full bg-blue-500" />
+                    <span>Dedicated Support</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-brand-navy mb-2">
-                      Message *
-                    </label>
-                    <textarea
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange('message')}
-                      placeholder="Tell us how we can help"
-                      className="w-full px-4 py-3 rounded-lg border border-brand-border text-sm text-brand-primary-text focus:outline-none focus:ring-2 focus:ring-brand-orange focus:border-brand-orange resize-none"
-                    />
-                  </div>
+      {/* Contact Details (Reference Techasoft Design - 3 Columns without WhatsApp) */}
+      <section className="py-12 md:py-16 bg-brand-light-gray border-t border-brand-border animate-contact-details">
+        <div className="container-custom max-w-6xl">
+          <div className="bg-white rounded-3xl p-8 sm:p-10 md:p-12 border border-brand-border shadow-[0_12px_40px_-15px_rgba(11,31,58,0.08)] hover:shadow-[0_20px_50px_-12px_rgba(11,31,58,0.16)] transition-all duration-500">
+            <h2 className="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight mb-8">
+              Contact Details
+            </h2>
 
-                  <Button type="submit" variant="primary" size="lg" className="w-full gap-2">
-                    <Send className="w-4 h-4" />
-                    <span>Send Message</span>
-                  </Button>
-                </form>
-              )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+              {/* Drop an Email - Interactive Tile with Hover & Active Click Shadow */}
+              <a
+                href="mailto:contact@billmasterapp.com"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                  <Mail className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1 group-hover:text-[#E8683E] transition-colors">
+                    DROP AN EMAIL
+                  </span>
+                  <span className="text-base font-bold text-brand-navy group-hover:text-[#E8683E] transition-colors break-words block leading-snug">
+                    contact@billmasterapp.com
+                  </span>
+                </div>
+              </a>
+
+              {/* Call Us - Interactive Tile with Hover & Active Click Shadow */}
+              <a
+                href="tel:+918374588099"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                  <Phone className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1 group-hover:text-[#E8683E] transition-colors">
+                    CALL US (INDIA)
+                  </span>
+                  <span className="text-base font-bold text-brand-navy group-hover:text-[#E8683E] transition-colors whitespace-nowrap block leading-snug">
+                    +91 83745 88099
+                  </span>
+                </div>
+              </a>
+
+              {/* Official Website - Interactive Tile with Hover & Active Click Shadow */}
+              <a
+                href="https://www.billmasterapp.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                  <Globe className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <div className="min-w-0">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block mb-1 group-hover:text-[#E8683E] transition-colors">
+                    OFFICIAL WEBSITE
+                  </span>
+                  <span className="text-base font-bold text-brand-navy group-hover:text-[#E8683E] transition-colors break-words block leading-snug">
+                    www.billmasterapp.com
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Location */}
-      <section className="py-16 bg-brand-light-gray border-t border-brand-border">
+      <section className="py-16 bg-brand-light-gray border-t border-brand-border animate-contact-map">
         <div className="container-custom">
           <SectionHeader
             badge="Visit Us"
@@ -184,11 +329,11 @@ export const ContactPage = () => {
             align="center"
           />
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Map Frame with Floating Red Pin Company Badge */}
-            <div className="relative rounded-2xl border border-brand-border overflow-hidden shadow-md bg-slate-100">
+            <div className="relative rounded-2xl border border-brand-border overflow-hidden shadow-md hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 bg-slate-100 group">
               {/* Floating Red Pin Badge */}
-              <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-red-100 shadow-md flex items-center gap-3">
+              <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-md px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl border border-red-100 shadow-md group-hover:shadow-lg flex items-center gap-3 transition-shadow">
                 <div className="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center shadow-sm shadow-red-500/40">
                   <MapPin className="w-4 h-4 fill-white text-white animate-pulse" />
                 </div>
@@ -213,7 +358,7 @@ export const ContactPage = () => {
             </div>
 
             {/* Office Information Card with Red Pin Highlight */}
-            <div className="mt-8 p-6 sm:p-7 bg-white rounded-2xl border border-brand-border shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="mt-8 p-6 sm:p-7 bg-white rounded-2xl border border-brand-border shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="flex items-start sm:items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-200 text-red-600 flex items-center justify-center shrink-0 shadow-2xs">
                   <MapPin className="w-6 h-6 text-red-600 fill-red-100" />
@@ -239,7 +384,7 @@ export const ContactPage = () => {
                   href={googleMapsDirectionsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold shadow-sm hover:shadow-lg transition-all"
                 >
                   <MapPin className="w-3.5 h-3.5 fill-white" />
                   <span>Get Directions</span>

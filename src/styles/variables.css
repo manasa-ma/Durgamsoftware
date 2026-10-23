@@ -1,13 +1,13 @@
 :root {
   /* Durgam Soft Design System Tokens */
-  --color-primary-navy: #0B1F3A;
+  --color-primary-navy: #0b1f3a;
   --color-dark-navy: #071525;
-  --color-primary-orange: #F97316;
-  --color-orange-hover: #EA580C;
-  --color-light-orange: #FFF7ED;
-  --color-white: #FFFFFF;
-  --color-light-gray: #F8FAFC;
-  --color-border: #E2E8F0;
-  --color-primary-text: #0F172A;
+  --color-primary-orange: #f97316;
+  --color-orange-hover: #ea580c;
+  --color-light-orange: #fff7ed;
+  --color-white: #ffffff;
+  --color-light-gray: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-primary-text: #0f172a;
   --color-secondary-text: #475569;
 }

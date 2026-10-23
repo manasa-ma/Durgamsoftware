@@ -10,15 +10,27 @@
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #0F172A;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #ffffff;
+    color: #0f172a;
+    font-family:
+      'Inter',
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    color: #0B1F3A;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #0b1f3a;
     letter-spacing: -0.02em;
   }
 }
@@ -41,7 +53,8 @@
 }
 
 @keyframes floatSlow {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -50,7 +63,8 @@
 }
 
 @keyframes pulseSubtle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -66,4 +80,75 @@
 
 .animate-pulse-subtle {
   animation: pulseSubtle 3s ease-in-out infinite;
+}
+
+/* ======================================================== */
+/* Webflow Indage Reference Hero Animations                 */
+/* ======================================================== */
+
+/* shrinkIn: image starts at scale 1.22 and opacity 0, shrinks down to 1.0 and fades in */
+@keyframes heroShrinkIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* slideInUp: cards and text slide up and fade in */
+@keyframes heroSlideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-shrink-1 {
+  animation: heroShrinkIn 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.15s both;
+}
+
+.animate-hero-shrink-2 {
+  animation: heroShrinkIn 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.45s both;
+}
+
+.animate-hero-shrink-3 {
+  animation: heroShrinkIn 1.1s cubic-bezier(0.165, 0.84, 0.44, 1) 0.35s both;
+}
+
+.animate-hero-card-orange {
+  animation: heroSlideInUp 0.95s cubic-bezier(0.165, 0.84, 0.44, 1) 0.3s both;
+}
+
+.animate-hero-card-black {
+  animation: heroSlideInUp 0.95s cubic-bezier(0.165, 0.84, 0.44, 1) 0.55s both;
+}
+
+.animate-hero-title {
+  animation: heroSlideInUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.05s both;
+}
+
+.animate-hero-intro {
+  animation: heroSlideInUp 0.85s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s both;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-shrink-1,
+  .animate-hero-shrink-2,
+  .animate-hero-shrink-3,
+  .animate-hero-card-orange,
+  .animate-hero-card-black,
+  .animate-hero-title,
+  .animate-hero-intro {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

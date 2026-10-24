@@ -280,7 +280,8 @@ export const CAREERS_PAGE_DATA = {
   contactHR: {
     email: 'careers@durgamsoft.com',
     phone: '+91 83745 88099',
-    office: 'Cherlapalli, Hyderabad, Telangana 500051',
+    office:
+      'PNO 292, opposite Silver Oak Banglows, Chinna, Cherlapalli, Hyderabad, Secunderabad, Telangana 500051',
     note: 'No LinkedIn profile required. You can apply directly through our application form or email your resume to careers@durgamsoft.com.',
   },
 };

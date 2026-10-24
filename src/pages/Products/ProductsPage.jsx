@@ -37,10 +37,10 @@ export const ProductsPage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mt-8">
             <Link
               to="/products/billmaster"
-              className="p-6 rounded-xl bg-white border border-brand-border hover:border-brand-orange hover:shadow-md transition-all group flex items-start gap-4"
+              className="p-6 rounded-xl bg-white border border-brand-border hover:border-stone-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex items-start gap-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-brand-light-orange flex items-center justify-center shrink-0 group-hover:bg-brand-orange transition-colors">
-                <Layers className="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" />
+              <div className="w-12 h-12 rounded-lg bg-brand-light-orange flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Layers className="w-6 h-6 text-brand-orange" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-brand-navy group-hover:text-brand-orange transition-colors flex items-center justify-between">
@@ -55,10 +55,10 @@ export const ProductsPage = () => {
 
             <Link
               to="/products/hardware"
-              className="p-6 rounded-xl bg-white border border-brand-border hover:border-brand-orange hover:shadow-md transition-all group flex items-start gap-4"
+              className="p-6 rounded-xl bg-white border border-brand-border hover:border-stone-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex items-start gap-4"
             >
-              <div className="w-12 h-12 rounded-lg bg-brand-light-orange flex items-center justify-center shrink-0 group-hover:bg-brand-orange transition-colors">
-                <Cpu className="w-6 h-6 text-brand-orange group-hover:text-white transition-colors" />
+              <div className="w-12 h-12 rounded-lg bg-brand-light-orange flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                <Cpu className="w-6 h-6 text-brand-orange" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-brand-navy group-hover:text-brand-orange transition-colors flex items-center justify-between">

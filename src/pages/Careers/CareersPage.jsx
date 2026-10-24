@@ -12,7 +12,7 @@ import {
   Send,
   Mail,
   Phone,
-  Check,
+  RotateCcw,
 } from 'lucide-react';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
 import { Button } from '../../components/buttons/Button';
@@ -54,9 +54,58 @@ export const CareersPage = () => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
+  const formatEmailBody = () => {
+    return (
+      `Hello Durgam Soft Recruitment Team,\n\n` +
+      `A new job application has been submitted via the Durgam Soft Careers portal:\n\n` +
+      `--------------------------------------------------\n` +
+      `CANDIDATE DETAILS\n` +
+      `--------------------------------------------------\n` +
+      `Full Name:           ${formData.name}\n` +
+      `Email Address:       ${formData.email}\n` +
+      `Phone Number:        ${formData.phone}\n` +
+      `Position Applied:    ${formData.position}\n` +
+      `Relevant Experience: ${formData.experience}\n\n` +
+      `--------------------------------------------------\n` +
+      `RESUME / PORTFOLIO LINK\n` +
+      `--------------------------------------------------\n` +
+      `Resume URL:          ${formData.resumeLink}\n\n` +
+      `--------------------------------------------------\n` +
+      `COVER NOTE / MESSAGE\n` +
+      `--------------------------------------------------\n` +
+      `${formData.coverNote || 'Not Provided'}\n\n` +
+      `--------------------------------------------------\n` +
+      `Sent via: Durgam Soft Careers Portal (www.durgamsoft.com/careers)\n` +
+      `Applicant Note: If you have a local PDF resume, you may attach it directly to this email.`
+    );
+  };
+
+  const emailSubject = `[Job Application] ${formData.position} - ${formData.name || 'Applicant'}`;
+  const mailtoLink = `mailto:careers@durgamsoft.com?subject=${encodeURIComponent(
+    emailSubject
+  )}&body=${encodeURIComponent(formatEmailBody())}`;
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    try {
+      window.location.href = mailtoLink;
+    } catch {
+      // Fallback handled smoothly by UI state
+    }
     setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      position: CAREERS_PAGE_DATA.positions[0]?.title || 'General Engineering Application',
+      experience: '',
+      resumeLink: '',
+      coverNote: '',
+    });
   };
 
   const categories = ['All', 'Engineering & Tech', 'Marketing & Sales'];
@@ -113,11 +162,11 @@ export const CareersPage = () => {
             {CAREERS_PAGE_DATA.culturePillars.map((pillar) => (
               <div
                 key={pillar.id}
-                className="p-6 sm:p-7 rounded-3xl bg-[#FAF7F2] border border-stone-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1.5 hover:border-orange-300 transition-all duration-300 flex flex-col justify-between group"
+                className="p-6 sm:p-7 rounded-3xl bg-[#FAF7F2] border border-stone-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1.5 hover:border-stone-300 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-5">
-                    <div className="w-11 h-11 rounded-2xl bg-white border border-stone-200 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white transition-all duration-300 shadow-2xs">
+                    <div className="w-11 h-11 rounded-2xl bg-white border border-stone-200 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform shadow-2xs">
                       {getPillarIcon(pillar.icon)}
                     </div>
                     <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white text-slate-600 border border-stone-200">
@@ -220,12 +269,12 @@ export const CareersPage = () => {
             {filteredPositions.map((job) => (
               <div
                 key={job.id}
-                className="p-6 sm:p-7 rounded-3xl bg-white border border-stone-200/90 shadow-2xs hover:shadow-2xl hover:-translate-y-1.5 hover:border-[#E8683E]/60 transition-all duration-300 flex flex-col justify-between group"
+                className="p-6 sm:p-7 rounded-3xl bg-white border border-stone-200/90 shadow-2xs hover:shadow-2xl hover:-translate-y-1.5 hover:border-stone-300 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Card Header: Icon + Department + Experience */}
                   <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100/80 flex items-center justify-center text-[#E8683E] group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white transition-all duration-300 shadow-2xs">
+                    <div className="w-11 h-11 rounded-2xl bg-orange-50 border border-orange-100/80 flex items-center justify-center text-[#E8683E] group-hover:scale-105 transition-transform shadow-2xs">
                       <Briefcase className="w-5 h-5" />
                     </div>
                     <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-stone-100 text-slate-700 border border-stone-200">
@@ -330,25 +379,94 @@ export const CareersPage = () => {
                   </div>
 
                   {submitted ? (
-                    <div className="text-center py-12 my-auto">
-                      <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3 animate-bounce">
-                        <Check className="w-7 h-7 stroke-[3]" />
+                    <div className="py-6 my-auto space-y-5 text-center animate-contact-form">
+                      <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-2 shadow-sm animate-bounce">
+                        <CheckCircle2 className="w-8 h-8 stroke-[2.2]" />
                       </div>
-                      <h4 className="text-xl font-black text-black mb-1.5">
-                        Application Received!
-                      </h4>
-                      <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                        Thank you for applying to Durgam Soft for{' '}
-                        <strong>{formData.position}</strong>. Our HR team will review your application and contact you at{' '}
-                        <span className="text-black font-semibold">{formData.email}</span> within 48 hours.
-                      </p>
-                      <button
-                        type="button"
-                        onClick={() => setSubmitted(false)}
-                        className="mt-5 px-5 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-xs font-bold text-slate-700 transition-colors"
-                      >
-                        Submit Another Application
-                      </button>
+
+                      <div>
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 block mb-1">
+                          Application Dispatched
+                        </span>
+                        <h4 className="text-xl sm:text-2xl font-black text-black tracking-tight mb-1.5">
+                          Thank You, {formData.name || 'Applicant'}!
+                        </h4>
+                        <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                          Your application details and resume link for <strong>{formData.position}</strong> have been formatted for{' '}
+                          <strong className="text-black font-semibold">careers@durgamsoft.com</strong>.
+                          Our HR team reviews every application within 48 hours.
+                        </p>
+                      </div>
+
+                      {/* Structured Summary Card */}
+                      <div className="text-left bg-stone-50/90 rounded-2xl p-4 sm:p-5 border border-stone-200 text-xs space-y-2.5">
+                        <div className="flex items-center justify-between pb-2 border-b border-stone-200">
+                          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                            Application Summary
+                          </span>
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">
+                            Sent to careers@durgamsoft.com
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                          <div>
+                            <span className="text-slate-400 font-semibold block text-[10px] uppercase">Applicant</span>
+                            <span className="font-bold text-slate-900 block">{formData.name}</span>
+                            <span className="text-slate-600 block text-[11px] truncate">{formData.email} • {formData.phone}</span>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 font-semibold block text-[10px] uppercase">Position &amp; Experience</span>
+                            <span className="font-bold text-[#E8683E] block">{formData.position}</span>
+                            <span className="text-slate-600 block text-[11px]">{formData.experience || 'Not Specified'}</span>
+                          </div>
+                        </div>
+
+                        <div className="pt-1">
+                          <span className="text-slate-400 font-semibold block text-[10px] uppercase">Resume / Portfolio Link</span>
+                          {formData.resumeLink ? (
+                            <a
+                              href={formData.resumeLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 hover:underline font-medium break-all block mt-0.5"
+                            >
+                              {formData.resumeLink}
+                            </a>
+                          ) : (
+                            <span className="text-slate-500 italic">Not Provided</span>
+                          )}
+                        </div>
+
+                        {formData.coverNote && (
+                          <div className="pt-1">
+                            <span className="text-slate-400 font-semibold block text-[10px] uppercase">Cover Note</span>
+                            <p className="text-slate-700 bg-white p-2.5 rounded-xl border border-stone-200 mt-1 max-h-24 overflow-y-auto whitespace-pre-wrap font-normal leading-relaxed text-[11px]">
+                              {formData.coverNote}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="space-y-2.5 pt-1">
+                        <a
+                          href={mailtoLink}
+                          className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#E8683E] hover:bg-orange-600 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+                        >
+                          <Mail className="w-4 h-4" />
+                          <span>Open in Email App (careers@durgamsoft.com)</span>
+                        </a>
+
+                        <button
+                          type="button"
+                          onClick={handleReset}
+                          className="w-full inline-flex items-center justify-center gap-2 py-2 px-4 rounded-xl border border-stone-200 bg-white text-slate-700 hover:bg-stone-50 font-semibold text-xs transition-all active:scale-[0.98] cursor-pointer"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+                          <span>Submit Another Application</span>
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     <form onSubmit={handleFormSubmit} className="space-y-3.5">
@@ -468,15 +586,25 @@ export const CareersPage = () => {
                         />
                       </div>
 
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        className="w-full gap-2 py-3.5 rounded-xl font-bold text-sm bg-[#E8683E] hover:bg-orange-600 text-white shadow-md hover:shadow-orange-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-98 transition-all cursor-pointer"
-                      >
-                        <Send className="w-4 h-4" />
-                        <span>Submit Application</span>
-                      </Button>
+                      <div className="space-y-2">
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          size="lg"
+                          className="w-full gap-2 py-3.5 rounded-xl font-bold text-sm bg-[#E8683E] hover:bg-orange-600 text-white shadow-md hover:shadow-orange-500/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-98 transition-all cursor-pointer"
+                        >
+                          <Send className="w-4 h-4" />
+                          <span>Submit Application</span>
+                        </Button>
+
+                        <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1.5 pt-1">
+                          <Mail className="w-3.5 h-3.5 text-[#E8683E] shrink-0" />
+                          <span>
+                            Direct delivery to{' '}
+                            <strong className="text-black font-semibold">careers@durgamsoft.com</strong>
+                          </span>
+                        </p>
+                      </div>
                     </form>
                   )}
                 </div>

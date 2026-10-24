@@ -316,7 +316,7 @@ export const BlogPostPage = () => {
                 {prevPost ? (
                   <Link
                     to={`/resources/blog/${prevPost.slug}`}
-                    className="p-5 rounded-2xl bg-[#FAF7F2] hover:bg-orange-50 border border-stone-200 transition-all duration-200 group block"
+                    className="p-5 rounded-2xl bg-[#FAF7F2] hover:shadow-lg hover:border-stone-300 hover:-translate-y-0.5 border border-stone-200 transition-all duration-300 group block"
                   >
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#E8683E] block mb-1">
                       ← PREVIOUS ARTICLE
@@ -332,7 +332,7 @@ export const BlogPostPage = () => {
                 {nextPost && (
                   <Link
                     to={`/resources/blog/${nextPost.slug}`}
-                    className="p-5 rounded-2xl bg-[#FAF7F2] hover:bg-orange-50 border border-stone-200 transition-all duration-200 group block text-right"
+                    className="p-5 rounded-2xl bg-[#FAF7F2] hover:shadow-lg hover:border-stone-300 hover:-translate-y-0.5 border border-stone-200 transition-all duration-300 group block text-right"
                   >
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 group-hover:text-[#E8683E] block mb-1">
                       NEXT ARTICLE →

@@ -103,11 +103,11 @@ export const CompanyIntro = () => {
           return (
             <div
               key={pillar.id}
-              className="p-6 rounded-xl bg-white border border-brand-border hover:border-brand-orange hover:shadow-md transition-all duration-200 flex flex-col justify-between group"
+              className="p-6 rounded-xl bg-white border border-brand-border hover:border-stone-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-brand-light-orange flex items-center justify-center mb-5 group-hover:bg-brand-orange transition-colors">
-                  <div className="group-hover:text-white transition-colors">{icon}</div>
+                <div className="w-12 h-12 rounded-xl bg-brand-light-orange flex items-center justify-center mb-5 group-hover:scale-105 transition-transform">
+                  <div>{icon}</div>
                 </div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-brand-orange block mb-1">
                   {pillar.category}

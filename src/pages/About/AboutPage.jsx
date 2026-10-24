@@ -9,6 +9,7 @@ import {
   Check,
   Target,
   Eye,
+  ExternalLink,
 } from 'lucide-react';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
 import { Button } from '../../components/buttons/Button';
@@ -70,23 +71,25 @@ export const AboutPage = () => {
   const testimonials = [
     {
       quote:
-        'Using billmaster has been such a smooth experience. It’s clear that a lot of thought went into making it user-friendly, fast, and counter-ready.',
-      author: 'Diana Mounter',
-      role: 'Head of Product, Cloud',
+        'Durgam Soft rebuilt modrunclothing.com into a headless powerhouse and launched our native Flutter app. Our load speed dropped to 0.8s, and we now process over 15,000 monthly apparel dispatches seamlessly.',
+      author: 'Karthik Sundaram',
+      role: 'Founder & MD, ModRun Clothing',
+      url: 'https://modrunclothing.com/',
+      isLiveLink: true,
       avatar: testi1,
     },
     {
       quote:
-        'I didn’t realize how much I needed this product until I started using it. It’s so well-made and easy to use, and it saves me so much time and effort.',
-      author: 'Paul Smith',
-      role: 'Creative Director, Luminous',
+        'Billmaster POS with LAN clustering transformed our 5 billing counters. Direct weighing scale integration and barcode scanning eliminated counter queue delays during our busiest festival rushes.',
+      author: 'M. Ramesh Kumar',
+      role: 'Managing Director, Sri Krishna Retail',
       avatar: testi2,
     },
     {
       quote:
-        'This product does everything I hoped for and more. The design is so intuitive, and it fits seamlessly into my daily business routine.',
-      author: 'Tim Williams',
-      role: 'Founder, Orbitc',
+        'Durgam Soft engineered an offline-first mobile delivery app for our 45 field agents. Even in rural zones with zero connectivity, drivers capture signatures and print Bluetooth receipts without losing a single record.',
+      author: 'Sunil K. Reddy',
+      role: 'Operations Director, Zenith Express Logistics',
       avatar: testi3,
     },
   ];
@@ -165,7 +168,7 @@ export const AboutPage = () => {
                   {stat50}%
                 </span>
                 <p className="text-white text-lg font-medium leading-snug mt-6">
-                  Faster Response Times
+                  Lower Operational Costs
                 </p>
               </div>
             </div>
@@ -531,9 +534,22 @@ export const AboutPage = () => {
                     className="w-10 h-10 rounded-full object-cover shadow-2xs"
                   />
                   <div>
-                    <h4 className="font-bold text-sm text-black leading-tight">
-                      {t.author}
-                    </h4>
+                    <div className="flex items-center gap-1.5">
+                      <h4 className="font-bold text-sm text-black leading-tight">
+                        {t.author}
+                      </h4>
+                      {t.isLiveLink && (
+                        <a
+                          href={t.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-[#E8683E] transition-colors"
+                          title="Visit live client website"
+                        >
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      )}
+                    </div>
                     <p className="text-xs text-slate-500 mt-0.5 font-medium">
                       {t.role}
                     </p>

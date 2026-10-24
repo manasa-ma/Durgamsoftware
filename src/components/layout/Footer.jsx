@@ -1,9 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { NAVIGATION_ITEMS } from '../../data/navigation';
 import { COMPANY_NAME } from '../../utils/constants';
+import durgamSoftLogo from '../../assets/logos/durgamsoft-logo.png';
 
 export const Footer = () => {
+  const location = useLocation();
+
+  const getEmail = () => {
+    const path = location.pathname;
+    if (path.startsWith('/careers') || path.startsWith('/jobs')) {
+      return 'careers@durgamsoft.com';
+    }
+    if (path.startsWith('/contact') || path.startsWith('/products/billmaster')) {
+      return 'contact@billmasterapp.com';
+    }
+    return 'info@durgamsoft.com';
+  };
+
+  const email = getEmail();
   const navLinks = NAVIGATION_ITEMS.filter((item) => !item.isButton);
 
   return (
@@ -12,27 +27,44 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           {/* Company branding */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4 group">
-              <div className="w-9 h-9 rounded-md bg-brand-orange flex items-center justify-center text-white font-bold text-lg">
-                DS
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 mb-4 group inline-flex">
+              <img
+                src={durgamSoftLogo}
+                alt={COMPANY_NAME}
+                className="w-10 h-10 object-contain drop-shadow-sm group-hover:scale-105 transition-transform"
+              />
               <span className="text-xl font-bold text-white tracking-tight">{COMPANY_NAME}</span>
             </Link>
-            <p className="text-sm text-slate-400 max-w-sm mb-6 leading-relaxed">
-              [COMPANY_FOOTER_SUMMARY_PLACEHOLDER]
-            </p>
-            <div className="space-y-2 text-xs text-slate-400">
+
+            <div className="space-y-2.5 text-xs text-slate-400 mb-6">
               <div>
                 <span className="font-semibold text-slate-300">Address: </span>
-                <span>[ADDRESS]</span>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Durgam%20Soft%20Pvt.%20Ltd.%2C%20PNO%20292%2C%20opposite%20Silver%20Oak%20Banglows%2C%20Chinna%2C%20Cherlapalli%2C%20Hyderabad%2C%20Secunderabad%2C%20Telangana%20500051"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-orange transition-colors leading-relaxed inline"
+                >
+                  PNO 292, opposite Silver Oak Banglows, Chinna, Cherlapalli, Hyderabad, Secunderabad, Telangana 500051
+                </a>
               </div>
               <div>
                 <span className="font-semibold text-slate-300">Email: </span>
-                <span>[EMAIL]</span>
+                <a
+                  href={`mailto:${email}`}
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  {email}
+                </a>
               </div>
               <div>
                 <span className="font-semibold text-slate-300">Phone: </span>
-                <span>[PHONE]</span>
+                <a
+                  href="tel:+918374588099"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  83745 88099
+                </a>
               </div>
             </div>
           </div>
@@ -154,3 +186,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

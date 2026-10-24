@@ -22,10 +22,10 @@ const getIndustryIcon = (iconName) => {
 
 export const IndustryCard = ({ industry }) => {
   return (
-    <div className="rounded-xl bg-white p-6 border border-brand-border hover:border-brand-orange transition-all duration-200 hover:shadow-md flex flex-col justify-between group">
+    <div className="rounded-xl bg-white p-6 border border-brand-border hover:border-stone-300 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between group">
       <div>
-        <div className="w-12 h-12 rounded-lg bg-brand-light-orange group-hover:bg-brand-orange flex items-center justify-center mb-5 transition-colors duration-200">
-          <div className="group-hover:text-white transition-colors">
+        <div className="w-12 h-12 rounded-lg bg-brand-light-orange flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-200">
+          <div>
             {getIndustryIcon(industry.iconName)}
           </div>
         </div>

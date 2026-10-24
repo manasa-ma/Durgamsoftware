@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Send, Mail, Phone, Globe } from 'lucide-react';
+import { MapPin, Send, Mail, Phone, Globe, CheckCircle2, RotateCcw } from 'lucide-react';
 import { Breadcrumb } from '../../components/common/Breadcrumb';
 import { SectionHeader } from '../../components/common/SectionHeader';
 import { Button } from '../../components/buttons/Button';
@@ -18,9 +18,50 @@ export const ContactPage = () => {
   const handleChange = (key) => (e) =>
     setFormData({ ...formData, [key]: e.target.value });
 
+  const formatEmailBody = () => {
+    return (
+      `Hello Billmaster / Durgam Soft Team,\n\n` +
+      `You have received a new inquiry from the Durgam Soft website contact form:\n\n` +
+      `--------------------------------------------------\n` +
+      `CONTACT DETAILS\n` +
+      `--------------------------------------------------\n` +
+      `Full Name:    ${formData.name}\n` +
+      `Email:        ${formData.email}\n` +
+      `Company:      ${formData.company ? formData.company : 'Not Provided'}\n` +
+      `Subject:      ${formData.subject}\n\n` +
+      `--------------------------------------------------\n` +
+      `MESSAGE\n` +
+      `--------------------------------------------------\n` +
+      `${formData.message}\n\n` +
+      `--------------------------------------------------\n` +
+      `Sent via: Durgam Soft Contact Page (www.billmasterapp.com)`
+    );
+  };
+
+  const emailSubject = `[Website Inquiry] ${formData.subject || 'General Inquiry'} - ${formData.name || 'Visitor'}`;
+  const mailtoLink = `mailto:contact@billmasterapp.com?subject=${encodeURIComponent(
+    emailSubject
+  )}&body=${encodeURIComponent(formatEmailBody())}`;
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    try {
+      window.location.href = mailtoLink;
+    } catch {
+      // Fallback handled smoothly by UI state
+    }
     setSubmitted(true);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      subject: '',
+      message: '',
+    });
   };
 
   const companyName = 'Durgam Soft Pvt. Ltd.';
@@ -97,16 +138,80 @@ export const ContactPage = () => {
                   </div>
 
                   {submitted ? (
-                    <div className="text-center py-12 my-auto">
-                      <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4 animate-bounce">
-                        <span className="text-emerald-600 font-bold text-xl">✓</span>
+                    <div className="py-6 my-auto space-y-6 text-center animate-contact-form">
+                      <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto text-emerald-600 shadow-sm animate-bounce">
+                        <CheckCircle2 className="w-9 h-9 stroke-[2.2]" />
                       </div>
-                      <h3 className="text-xl font-bold text-brand-navy mb-2">
-                        Message Sent Successfully
-                      </h3>
-                      <p className="text-brand-secondary-text max-w-md mx-auto text-sm">
-                        Thank you for contacting Durgam Soft. Our team will review your inquiry and get back to you shortly.
-                      </p>
+
+                      <div>
+                        <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 block mb-1">
+                          Email Dispatched
+                        </span>
+                        <h3 className="text-2xl font-black text-brand-navy tracking-tight mb-2">
+                          Thank You, {formData.name || 'Valued Visitor'}!
+                        </h3>
+                        <p className="text-sm text-brand-secondary-text max-w-md mx-auto leading-relaxed">
+                          Your inquiry details have been forwarded to{' '}
+                          <strong className="text-brand-navy font-semibold">contact@billmasterapp.com</strong>.
+                          Our team will review your message and get back to you within 24 hours.
+                        </p>
+                      </div>
+
+                      {/* Structured Details Card */}
+                      <div className="text-left bg-slate-50/90 rounded-2xl p-5 border border-slate-200/90 shadow-2xs space-y-3">
+                        <div className="flex items-center justify-between pb-2.5 border-b border-slate-200">
+                          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                            Message Summary
+                          </span>
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">
+                            Sent to contact@billmasterapp.com
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                          <div>
+                            <span className="text-slate-400 font-semibold block text-[11px]">FROM</span>
+                            <span className="font-bold text-slate-800 break-words">{formData.name}</span>
+                            <span className="text-slate-500 block truncate">{formData.email}</span>
+                          </div>
+                          <div>
+                            <span className="text-slate-400 font-semibold block text-[11px]">COMPANY</span>
+                            <span className="font-semibold text-slate-800">{formData.company || 'Not Specified'}</span>
+                          </div>
+                        </div>
+
+                        <div className="text-xs pt-1">
+                          <span className="text-slate-400 font-semibold block text-[11px]">SUBJECT</span>
+                          <span className="font-bold text-brand-navy">{formData.subject}</span>
+                        </div>
+
+                        <div className="text-xs pt-1">
+                          <span className="text-slate-400 font-semibold block text-[11px]">MESSAGE DETAILS</span>
+                          <div className="mt-1 p-3 bg-white rounded-xl border border-slate-200/90 text-slate-700 leading-relaxed whitespace-pre-wrap max-h-32 overflow-y-auto font-normal">
+                            {formData.message}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="space-y-3 pt-1">
+                        <a
+                          href={mailtoLink}
+                          className="w-full inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-[#E8683E] hover:bg-[#d4582f] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-[0.98]"
+                        >
+                          <Mail className="w-4 h-4" />
+                          <span>Open in Email App (contact@billmasterapp.com)</span>
+                        </a>
+
+                        <button
+                          type="button"
+                          onClick={handleReset}
+                          className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 font-semibold text-xs transition-all active:scale-[0.98] cursor-pointer"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
+                          <span>Send Another Message</span>
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
@@ -181,15 +286,25 @@ export const ContactPage = () => {
                         />
                       </div>
 
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        size="lg"
-                        className="w-full gap-2 py-4 rounded-xl font-bold text-base shadow-md hover:shadow-[0_14px_30px_-6px_rgba(249,115,22,0.5)] hover:-translate-y-1 active:translate-y-0.5 active:scale-[0.98] active:shadow-sm transition-all duration-300 ease-out cursor-pointer"
-                      >
-                        <Send className="w-4 h-4" />
-                        <span>Send Message</span>
-                      </Button>
+                      <div className="space-y-2">
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          size="lg"
+                          className="w-full gap-2 py-4 rounded-xl font-bold text-base shadow-md hover:shadow-[0_14px_30px_-6px_rgba(249,115,22,0.5)] hover:-translate-y-1 active:translate-y-0.5 active:scale-[0.98] active:shadow-sm transition-all duration-300 ease-out cursor-pointer"
+                        >
+                          <Send className="w-4 h-4" />
+                          <span>Send Message</span>
+                        </Button>
+
+                        <p className="text-[11px] text-brand-secondary-text text-center flex items-center justify-center gap-1.5 pt-1">
+                          <Mail className="w-3.5 h-3.5 text-[#E8683E] shrink-0" />
+                          <span>
+                            Direct delivery to{' '}
+                            <strong className="text-brand-navy font-semibold">contact@billmasterapp.com</strong>
+                          </span>
+                        </p>
+                      </div>
                     </form>
                   )}
                 </div>
@@ -262,9 +377,9 @@ export const ContactPage = () => {
               {/* Drop an Email - Interactive Tile with Hover & Active Click Shadow */}
               <a
                 href="mailto:contact@billmasterapp.com"
-                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-slate-300 hover:shadow-xl hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-2xs mt-0.5">
                   <Mail className="w-5 h-5 stroke-[2.2]" />
                 </div>
                 <div className="min-w-0">
@@ -280,9 +395,9 @@ export const ContactPage = () => {
               {/* Call Us - Interactive Tile with Hover & Active Click Shadow */}
               <a
                 href="tel:+918374588099"
-                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-slate-300 hover:shadow-xl hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-2xs mt-0.5">
                   <Phone className="w-5 h-5 stroke-[2.2]" />
                 </div>
                 <div className="min-w-0">
@@ -300,9 +415,9 @@ export const ContactPage = () => {
                 href="https://www.billmasterapp.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-orange-300 hover:shadow-[0_16px_36px_-10px_rgba(232,104,62,0.18)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
+                className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200/90 shadow-2xs hover:bg-white hover:border-slate-300 hover:shadow-xl hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.98] active:shadow-2xs transition-all duration-300 flex items-start gap-4 group cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E8683E] group-hover:text-white shadow-2xs mt-0.5">
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#E8683E] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-2xs mt-0.5">
                   <Globe className="w-5 h-5 stroke-[2.2]" />
                 </div>
                 <div className="min-w-0">

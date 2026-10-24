@@ -119,6 +119,10 @@ export const router = createBrowserRouter([
         path: '/book-demo',
         element: <BookDemoPage />,
       },
+      {
+        path: '/demo',
+        element: <BookDemoPage />,
+      },
     ],
   },
 ]);

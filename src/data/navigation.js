@@ -58,10 +58,6 @@ export const NAVIGATION_ITEMS = [
     ],
   },
   {
-    label: 'Industries',
-    to: '/industries',
-  },
-  {
     label: 'About Us',
     to: '/about-us',
   },

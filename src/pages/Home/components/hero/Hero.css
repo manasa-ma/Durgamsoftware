@@ -1,0 +1,195 @@
+/* Durgam Soft Hero Slideshow Custom Animations & Styling */
+
+@keyframes heroFloatGentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heroFloatReverse {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes heroPulseGlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heroLaserScan {
+  0% {
+    top: 6%;
+    opacity: 0.9;
+  }
+  50% {
+    top: 92%;
+    opacity: 1;
+  }
+  100% {
+    top: 6%;
+    opacity: 0.9;
+  }
+}
+
+@keyframes heroDashStream {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@keyframes heroChartDraw {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heroReceiptFeed {
+  from {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes heroCodeTyping {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.hero-animate-float {
+  animation: heroFloatGentle 5s ease-in-out infinite;
+}
+
+.hero-animate-float-reverse {
+  animation: heroFloatReverse 6s ease-in-out infinite;
+}
+
+.hero-animate-pulse-glow {
+  animation: heroPulseGlow 3.5s ease-in-out infinite;
+}
+
+.hero-animate-laser {
+  animation: heroLaserScan 2.4s ease-in-out infinite;
+}
+
+.hero-animate-dash {
+  stroke-dasharray: 6 6;
+  animation: heroDashStream 2s linear infinite;
+}
+
+.hero-animate-chart {
+  stroke-dasharray: 600;
+  animation: heroChartDraw 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-animate-receipt {
+  animation: heroReceiptFeed 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-cursor-blink {
+  animation: heroCodeTyping 1.2s steps(2, start) infinite;
+}
+
+/* Linear progress bar fill for 6-second slide timer */
+.hero-progress-bar {
+  animation-name: heroProgressFill;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.hero-progress-bar.paused {
+  animation-play-state: paused;
+}
+
+@keyframes heroProgressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Perspective utilities for 3D depth */
+.hero-perspective-container {
+  perspective: 1000px;
+}
+
+.hero-isometric-tilt {
+  transform: rotateX(10deg) rotateY(-8deg) rotateZ(2deg);
+}
+
+/* Slide Card Elevation & Rich Shadow Effects */
+.hero-slide-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 20px 45px -12px rgba(11, 31, 58, 0.12),
+    0 10px 24px -8px rgba(249, 115, 22, 0.07),
+    0 1px 3px 0 rgba(11, 31, 58, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-slide-card:hover {
+  box-shadow:
+    0 28px 60px -12px rgba(11, 31, 58, 0.18),
+    0 14px 30px -6px rgba(249, 115, 22, 0.12),
+    0 1px 4px 0 rgba(249, 115, 22, 0.2);
+}
+
+.hero-slide-card-active {
+  border-color: rgba(249, 115, 22, 0.35);
+  box-shadow:
+    0 25px 50px -12px rgba(11, 31, 58, 0.15),
+    0 12px 28px -8px rgba(249, 115, 22, 0.1),
+    0 0 0 1px rgba(249, 115, 22, 0.2);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate-float,
+  .hero-animate-float-reverse,
+  .hero-animate-pulse-glow,
+  .hero-animate-laser,
+  .hero-animate-dash,
+  .hero-animate-chart,
+  .hero-animate-receipt,
+  .hero-cursor-blink,
+  .hero-progress-bar {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-progress-bar {
+    width: 100% !important;
+  }
+}

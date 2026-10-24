@@ -1,0 +1,168 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { NAVIGATION_ITEMS } from '../../data/navigation';
+import { COMPANY_NAME } from '../../utils/constants';
+export const Footer = () => {
+  const navLinks = NAVIGATION_ITEMS.filter((item) => !item.isButton);
+  return (
+    <footer className="bg-brand-dark-navy text-slate-300 pt-16 pb-12 border-t border-slate-800">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+          {/* Company branding */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
+              <img
+                src="/images/durgamsoft-logo.png"
+                alt="Durgam Soft"
+                className="w-10 h-10 object-contain drop-shadow group-hover:scale-105 transition-transform"
+              />
+              <span className="text-xl font-bold text-white tracking-tight group-hover:text-brand-orange transition-colors">{COMPANY_NAME}</span>
+            </Link>
+            <p className="text-sm text-slate-400 max-w-sm mb-6 leading-relaxed">
+              Empowering businesses with enterprise billing software, high-speed POS hardware, and custom software development.
+            </p>
+            <div className="space-y-2.5 text-xs text-slate-400">
+              <div className="flex items-start gap-2">
+                <span className="font-semibold text-slate-300 shrink-0">Address: </span>
+                <span className="leading-relaxed">
+                  PNO 292, opposite Silver Oak Banglows, Chinna cherlapalli, Hyderabad, Secunderabad, Telangana, 500052
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-slate-300 shrink-0">Email: </span>
+                <a
+                  href="mailto:info@durgamsoft.com"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  info@durgamsoft.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-semibold text-slate-300 shrink-0">Phone: </span>
+                <a
+                  href="tel:8374588099"
+                  className="hover:text-brand-orange transition-colors font-medium text-slate-200"
+                >
+                  +91 83745 88099
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Products Column */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
+              Products
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link to="/products" className="hover:text-brand-orange transition-colors">
+                  All Products
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/products/billmaster"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  billmaster Software
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/hardware" className="hover:text-brand-orange transition-colors">
+                  POS & Hardware
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services Column */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
+              Services
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link to="/services" className="hover:text-brand-orange transition-colors">
+                  All Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/web-development"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/mobile-development"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  Mobile Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/desktop-development"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  Desktop Applications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services/digital-marketing"
+                  className="hover:text-brand-orange transition-colors"
+                >
+                  Digital Marketing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Quick Links Column */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">
+              Quick Links
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.to} className="hover:text-brand-orange transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/book-demo"
+                  className="hover:text-brand-orange transition-colors font-semibold text-brand-orange"
+                >
+                  Book a Demo →
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+          <div>
+            &copy; {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
+          </div>
+          <div className="flex gap-6">
+            <span className="hover:text-white cursor-pointer transition-colors">
+              [PRIVACY_POLICY]
+            </span>
+            <span className="hover:text-white cursor-pointer transition-colors">
+              [TERMS_OF_SERVICE]
+            </span>
+            <span className="hover:text-white cursor-pointer transition-colors">[SITEMAP]</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

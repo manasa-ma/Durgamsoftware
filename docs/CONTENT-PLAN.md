@@ -18,20 +18,20 @@ To maintain absolute integrity during the architectural phase:
 
 ## 2. Placeholder Inventory
 
-| Placeholder Token | Component Location | Expected Replacement |
-| :--- | :--- | :--- |
-| `[HERO_HEADLINE]` | `Hero.tsx` | Approved marketing hook / main company headline |
-| `[HERO_DESCRIPTION]` | `Hero.tsx` | 2-3 sentence company overview value proposition |
-| `[PRIMARY_CTA]` | `Hero.tsx` | Main action (e.g., "Explore billmaster" / "Book a Demo") |
-| `[SECONDARY_CTA]` | `Hero.tsx` | Secondary action (e.g., "Contact Sales") |
-| `[PRODUCT_DESCRIPTION]` | `ProductsPreview.tsx` | Approved product summaries for billmaster & hardware |
-| `[SERVICE_DESCRIPTION]` | `ServicesPreview.tsx` | Approved service overviews for development & marketing |
-| `[FOUNDER_NAME]` | `FounderPreview.tsx` | Full name of Founder & CEO |
-| `[FOUNDER_DESIGNATION]` | `FounderPreview.tsx` | Official title (e.g., "Founder & Chief Executive Officer") |
-| `[FOUNDER_BIO]` | `FounderPreview.tsx` | Official executive background and career summary |
-| `[FOUNDER_VISION]` | `FounderPreview.tsx` | Executive vision quote on software empowerment |
-| `[CAREERS_HEADLINE]` | `CareersPreview.tsx` | Careers section headline |
-| `[CAREERS_DESCRIPTION]` | `CareersPreview.tsx` | Work culture and recruitment statement |
-| `[VIEW_OPENINGS]` | `CareersPreview.tsx` | Career CTA button label |
-| `[CONTACT_HEADLINE]` | `ContactCTA.tsx` | Bottom CTA heading |
-| `[CONTACT_DESCRIPTION]` | `ContactCTA.tsx` | Bottom CTA supporting paragraph |
+| Placeholder Token       | Component Location    | Expected Replacement                                       |
+| :---------------------- | :-------------------- | :--------------------------------------------------------- |
+| `[HERO_HEADLINE]`       | `Hero.tsx`            | Approved marketing hook / main company headline            |
+| `[HERO_DESCRIPTION]`    | `Hero.tsx`            | 2-3 sentence company overview value proposition            |
+| `[PRIMARY_CTA]`         | `Hero.tsx`            | Main action (e.g., "Explore billmaster" / "Book a Demo")   |
+| `[SECONDARY_CTA]`       | `Hero.tsx`            | Secondary action (e.g., "Contact Sales")                   |
+| `[PRODUCT_DESCRIPTION]` | `ProductsPreview.tsx` | Approved product summaries for billmaster & hardware       |
+| `[SERVICE_DESCRIPTION]` | `ServicesPreview.tsx` | Approved service overviews for development & marketing     |
+| `[FOUNDER_NAME]`        | `FounderPreview.tsx`  | Full name of Founder & CEO                                 |
+| `[FOUNDER_DESIGNATION]` | `FounderPreview.tsx`  | Official title (e.g., "Founder & Chief Executive Officer") |
+| `[FOUNDER_BIO]`         | `FounderPreview.tsx`  | Official executive background and career summary           |
+| `[FOUNDER_VISION]`      | `FounderPreview.tsx`  | Executive vision quote on software empowerment             |
+| `[CAREERS_HEADLINE]`    | `CareersPreview.tsx`  | Careers section headline                                   |
+| `[CAREERS_DESCRIPTION]` | `CareersPreview.tsx`  | Work culture and recruitment statement                     |
+| `[VIEW_OPENINGS]`       | `CareersPreview.tsx`  | Career CTA button label                                    |
+| `[CONTACT_HEADLINE]`    | `ContactCTA.tsx`      | Bottom CTA heading                                         |
+| `[CONTACT_DESCRIPTION]` | `ContactCTA.tsx`      | Bottom CTA supporting paragraph                            |

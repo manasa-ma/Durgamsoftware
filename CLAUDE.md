@@ -10,7 +10,7 @@ This project contains the frontend multi-page application for **Durgam Soft Pvt.
 # Development server (http://localhost:5173)
 npm run dev
 
-# Production build (TypeScript validation + Vite bundle)
+# Production build (Vite bundle)
 npm run build
 
 # Code linting
@@ -28,7 +28,7 @@ npm run preview
    The website is a **proper multi-page application** powered by **React Router v7**.
    - No anchor scrolling (`#products`, `#services`, etc.) for main navigation.
    - All navigation items map to dedicated routes (`/`, `/products`, `/services`, `/industries`, `/about`, `/resources`, `/careers`, `/contact`, `/book-demo`).
-   - Inner pages use `<Breadcrumb />` (`src/components/common/Breadcrumb.tsx`).
+   - Inner pages use `<Breadcrumb />` (`src/components/common/Breadcrumb.jsx`).
    - Active routes receive visible highlight styling via `<NavLink>`.
 
 2. **Concise Homepage**:

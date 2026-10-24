@@ -5,21 +5,18 @@ import { DevelopmentServiceCard } from '../../../components/services/Development
 import { MarketingServiceCard } from '../../../components/services/MarketingServiceCard';
 import { Button } from '../../../components/buttons/Button';
 import { SERVICES_DATA } from '../../../data/services';
-
 export const ServicesPreview = () => {
   const devServices = SERVICES_DATA.filter((s) => s.group === 'Application Development');
   const marketingServices = SERVICES_DATA.filter((s) => s.group === 'Digital Marketing');
-
   return (
-    <section className="bg-brand-light-gray py-16 md:py-24 border-b border-brand-border">
+    <section id="products" className="bg-brand-light-gray -mt-[50px] relative z-10 border-t border-b border-brand-border py-16 md:py-24">
       <div className="container-custom">
         <SectionHeader
-          badge="Expertise"
-          title="Services — Development + Marketing"
+          title="What We Do"
           subtitle="Full-cycle software engineering and targeted digital growth services designed to scale your enterprise."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {devServices.map((service) => (
             <DevelopmentServiceCard key={service.id} service={service} />
           ))}
@@ -28,10 +25,10 @@ export const ServicesPreview = () => {
           ))}
         </div>
 
-        {/* Explore Services CTA linking to /services */}
+        {/* Discuss Project CTA linking to /book-demo */}
         <div className="text-center">
-          <Button variant="primary" size="lg" to="/services" className="gap-2">
-            <span>Explore All Services</span>
+          <Button variant="primary" size="lg" to="/book-demo" className="gap-2">
+            <span>Discuss Your Project</span>
             <ArrowRight className="w-4 h-4" />
           </Button>
         </div>

@@ -7,27 +7,25 @@ export const HERO_DATA = {
   secondaryCtaLink: '/book-demo',
   productVisualPlaceholder: '[BILLMASTER_VISUAL_PREVIEW]',
 };
-
 export const CAREERS_DATA = {
-  headline: 'Join Our Team & Build the Future of Software',
-  description:
-    'Work alongside dedicated engineers, mobile developers, and product creators building proprietary commercial software and bespoke platforms.',
-  viewOpeningsText: 'View All Open Roles',
+  headline: '[CAREERS_HEADLINE]',
+  description: '[CAREERS_DESCRIPTION]',
+  viewOpeningsText: '[VIEW_OPENINGS]',
   positions: [
     {
-      id: 'field-marketing-executive',
-      title: 'Field Marketing Executive',
-      category: 'Marketing & Sales',
-      location: 'Hyderabad, Warangal, Vijayawada, Ongole',
-      employmentType: 'Full Time',
+      id: 'pos-1',
+      title: '[JOB_POSITION_1]',
+      category: '[JOB_CATEGORY]',
+      location: '[LOCATION_PLACEHOLDER]',
+      employmentType: '[EMPLOYMENT_TYPE]',
       applyLink: '/careers',
     },
     {
-      id: 'software-engineer-flutter',
-      title: 'Software Engineer (Flutter)',
-      category: 'Engineering & Tech',
-      location: 'Hyderabad',
-      employmentType: 'Full Time',
+      id: 'pos-2',
+      title: '[JOB_POSITION_2]',
+      category: '[JOB_CATEGORY]',
+      location: '[LOCATION_PLACEHOLDER]',
+      employmentType: '[EMPLOYMENT_TYPE]',
       applyLink: '/careers',
     },
   ],

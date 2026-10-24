@@ -1,13 +1,7 @@
 import React, { useEffect } from 'react';
 import { Hero } from './components/Hero';
-import { CompanyOverview } from './components/CompanyOverview';
-import { ProductsPreview } from './components/ProductsPreview';
+import { VideoSection } from './components/VideoSection';
 import { ServicesPreview } from './components/ServicesPreview';
-import { IndustriesPreview } from './components/IndustriesPreview';
-import { AboutPreview } from './components/AboutPreview';
-import { ResourcesPreview } from './components/ResourcesPreview';
-import { CareersPreview } from './components/CareersPreview';
-import { ContactCTA } from '../../components/layout/ContactCTA';
 import { updatePageMeta } from '../../utils/seo';
 
 export const HomePage = () => {
@@ -21,30 +15,14 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* 1. Hero / Company Overview */}
+      {/* 1. Hero Slideshow */}
       <Hero />
-      <CompanyOverview />
 
-      {/* 2. Products Preview */}
-      <ProductsPreview />
+      {/* Video Showcase Section */}
+      <VideoSection />
 
-      {/* 3. Services Preview */}
+      {/* 2. What We Do (Services Showcase) */}
       <ServicesPreview />
-
-      {/* 4. Industries Preview */}
-      <IndustriesPreview />
-
-      {/* 5. About Us Preview */}
-      <AboutPreview />
-
-      {/* 6. Resources / Blog Preview */}
-      <ResourcesPreview />
-
-      {/* 7. Careers Preview */}
-      <CareersPreview />
-
-      {/* 8. Contact CTA */}
-      <ContactCTA />
     </>
   );
 };

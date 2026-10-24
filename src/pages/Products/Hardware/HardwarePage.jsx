@@ -5,19 +5,17 @@ import { HardwareCard } from '../../../components/products/HardwareCard';
 import { Button } from '../../../components/buttons/Button';
 import { HARDWARE_PRODUCTS } from '../../../data/products';
 import { updatePageMeta } from '../../../utils/seo';
-
 export const HardwarePage = () => {
   useEffect(() => {
     updatePageMeta({
       title: 'POS Hardware & Peripherals — Durgam Soft',
       description:
-        'Certified point-of-sale hardware peripherals including thermal printers, barcode scanners, label printers, and supplies verified for billmaster.',
+        'Certified point-of-sale hardware peripherals including thermal printers, barcode scanners, label printers, and supplies verified for Billmaster.',
     });
   }, []);
-
   return (
     <div className="bg-white min-h-screen">
-      <Breadcrumb items={[{ label: 'Products', to: '/products' }, { label: 'Hardware' }]} />
+      <Breadcrumb items={[{ label: 'Our Products', to: '/products' }, { label: 'Hardware' }]} />
 
       {/* Header */}
       <section className="bg-brand-light-gray py-14 md:py-20 border-b border-brand-border">
@@ -25,7 +23,7 @@ export const HardwarePage = () => {
           <SectionHeader
             badge="POS Peripherals"
             title="Point-of-Sale Hardware & Supplies"
-            subtitle="Industrial-grade thermal printers, barcode scanners, label printers, and genuine paper supplies certified for billmaster integration."
+            subtitle="Industrial-grade thermal printers, barcode scanners, label printers, and genuine paper supplies certified for Billmaster integration."
             align="center"
           />
         </div>
@@ -60,7 +58,7 @@ export const HardwarePage = () => {
               to="/products/billmaster"
               className="bg-transparent text-white border-white hover:bg-white/10 hover:text-white"
             >
-              Explore billmaster Software
+              Explore Billmaster Software
             </Button>
           </div>
         </div>
@@ -68,5 +66,4 @@ export const HardwarePage = () => {
     </div>
   );
 };
-
 export default HardwarePage;
